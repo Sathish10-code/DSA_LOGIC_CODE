@@ -3,8 +3,7 @@ class Solution {
         int n =temperatures.length;
         int[] days = new  int[n];
         Stack<Integer> st = new Stack<>();
-        int c=0;
-        Arrays.fill(days,0);
+        // Arrays.fill(days,0);
         for(int i=0;i<n;i++){
             while(!st.isEmpty() && temperatures[i]>temperatures[st.peek()]){
                 int prev = st.pop();
