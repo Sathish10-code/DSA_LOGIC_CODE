@@ -1,6 +1,6 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        nums.sort()
+        # nums.sort()
         if len(nums)<=2:
             return len(nums)
         i=2
