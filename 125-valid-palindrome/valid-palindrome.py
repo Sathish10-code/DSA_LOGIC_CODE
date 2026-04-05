@@ -1,4 +1,6 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        rev = re.sub(r'[^a-zA-Z0-9]','',s).lower()
-        return rev==rev[::-1]
+        import re 
+        s = re.sub(r'[^a-zA-Z0-9]','',s)
+        s=s.lower()
+        return s == s[::-1]
