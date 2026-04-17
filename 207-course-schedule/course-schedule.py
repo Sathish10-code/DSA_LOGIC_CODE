@@ -1,23 +1,23 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        child = collections.defaultdict(list)
-        branch = [0]*numCourses
-        for i,j in prerequisites:
-            child[j].append(i)
-            branch[i]+=1
-        q=collections.deque()
-        for i in range(numCourses):
-            if branch[i]==0:
-                q.append(i)
+        graph = defaultdict(list)
+        for pair in prerequisites:
+            course,pre = pair
+            graph[course].append(pre)
+        visited = [0]*numCourses
+        def hasCycle(course):
+            if visited[course]==1: return True
+            if visited[course]==2: return False
+
+            visited[course]=1
+            for pre in graph[course]:
+                if hasCycle(pre):
+                    return True
+            visited[course]=2
+            return False
         
-        while q:
-            node = q.popleft()
-            for i in child[node]:
-                branch[i]-=1
-                if branch[i]==0:
-                    q.append(i)
-        
-        for i in branch:
-            if i!=0:
+        for course in range(numCourses):
+            if hasCycle(course):
                 return False
+        
         return True
