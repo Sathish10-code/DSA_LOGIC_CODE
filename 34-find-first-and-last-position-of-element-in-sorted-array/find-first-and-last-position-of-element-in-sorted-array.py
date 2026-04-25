@@ -1,32 +1,32 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        def fir_pos(nums):
-            left,right =0, len(nums)-1
-            index=-1
-            while(left<=right):
+        
+        def first_pos(nums):
+            left,right =0,len(nums)-1
+            index =-1
+            while left <=right:
                 mid = (left+right)//2
-                if(nums[mid]<target):
-                    left=mid+1
+                if nums[mid]<target:
+                    left = left+1
                 else:
-                    right=mid-1
-                if(nums[mid]==target):
-                    index=mid
+                    right -=1
+                if nums[mid]==target:
+                    index= mid
             return index
         
         def last_pos(nums):
-            left,right=0,len(nums)-1
+            left,right =0,len(nums)-1
             index=-1
-            while(left<=right):
-                mid=(left+right)//2
-                if(nums[mid]>target):
-                    right=mid-1
+            while left<=right:
+                mid = (left+right)//2
+                if nums[mid]>target:
+                    right-=1
                 else:
-                    left = mid+1
-                if(nums[mid]==target):
+                    left +=1
+                if nums[mid]==target:
                     index=mid
             return index
         
-        left = fir_pos(nums)
-        rig = last_pos(nums)
-
-        return [left,rig]
+        fir = first_pos(nums)
+        las = last_pos(nums)
+        return [fir,las]
