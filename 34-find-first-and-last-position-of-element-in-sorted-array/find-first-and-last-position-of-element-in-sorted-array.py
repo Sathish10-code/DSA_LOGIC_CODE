@@ -7,9 +7,9 @@ class Solution:
             while left <=right:
                 mid = (left+right)//2
                 if nums[mid]<target:
-                    left = left+1
+                    left = mid+1
                 else:
-                    right -=1
+                    right = mid-1
                 if nums[mid]==target:
                     index= mid
             return index
@@ -20,9 +20,9 @@ class Solution:
             while left<=right:
                 mid = (left+right)//2
                 if nums[mid]>target:
-                    right-=1
+                    right=mid-1
                 else:
-                    left +=1
+                    left = mid+1
                 if nums[mid]==target:
                     index=mid
             return index
