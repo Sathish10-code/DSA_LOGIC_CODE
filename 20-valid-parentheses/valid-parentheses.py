@@ -1,34 +1,10 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        st = deque()
-        l=0
-        r=len(s)
-
-        while l<r:
-            ch = s[l]
-            if  ch=='(' or ch=='[' or ch=='{':
-                st.append(ch)
-            elif not st and (ch==')' or ch=='}' or ch==']'):
+        mapping = {'{':'}','[':']','(':')'}
+        stack =[]
+        for char in s:
+            if char in mapping:
+                stack.append(char)
+            elif not stack or mapping[stack.pop()]!=char:
                 return False
-            elif  ch==')':
-                if st[-1]=='(':
-                    st.pop()
-                else:
-                    return False
-            elif ch==']':
-                if st[-1]=='[':
-                    st.pop()
-                else:
-                    return False
-            elif ch=='}':
-                if st[-1]=='{':
-                    st.pop()
-                else:
-                    return False
-            
-            l+=1    
-        
-        return not st
-            
-            
-        
+        return not stack
