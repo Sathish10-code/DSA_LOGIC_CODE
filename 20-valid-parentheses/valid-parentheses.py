@@ -5,6 +5,7 @@ class Solution:
         for char in s:
             if char in mapping:
                 stack.append(char)
-            elif not stack or mapping[stack.pop()]!=char:
-                return False
+            elif char in mapping.values():
+                if not stack or mapping[stack.pop()]!=char:
+                    return False
         return not stack
