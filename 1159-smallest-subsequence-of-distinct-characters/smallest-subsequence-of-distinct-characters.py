@@ -1,6 +1,9 @@
 class Solution:
     def smallestSubsequence(self, s: str) -> str:
-        last_occur = {char:i for i,char in enumerate(s)}
+        last_occur = {}
+        for i,char in enumerate(s):
+            last_occur[char]=i
+            
         stack=[]
         seen = set()
         for i,char in enumerate(s):
