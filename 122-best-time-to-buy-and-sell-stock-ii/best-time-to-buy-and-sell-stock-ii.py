@@ -1,12 +1,9 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        pro =0 
-        mini = prices[0]
-        for n in prices[1:]:
-            if mini < n:
-                ans = n-mini
-                pro +=ans
-                mini = n
-            if mini > n:
-                mini =n
-        return pro
+        prev = prices[0]
+        tot = 0
+        for pre in prices:
+            if pre > prev:
+                tot += pre - prev
+            prev = pre
+        return tot 
