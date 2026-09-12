@@ -1,4 +1,4 @@
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        wordmap = Counter(words)
-        return sorted(wordmap, key=lambda x:(-wordmap[x],x))[:k]
+        w = Counter(words)
+        return sorted(w, key = lambda x:(-w[x],x))[:k]
